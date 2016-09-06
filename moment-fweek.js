@@ -1,5 +1,5 @@
 // moment-fweek.js
-// version : 0.1
+// version : 0.1.0
 // author : Yuri Yurin
 // license : MIT
 // github.com/yujj/moment-fweek

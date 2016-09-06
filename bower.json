@@ -1,12 +1,12 @@
 {
-  "name": "moment-fquarter",
-  "main": "moment-fquarter.js",
+  "name": "moment-fweek",
+  "main": "moment-fweek.js",
   "version": "0.1.0",
-  "homepage": "https://github.com/robgallen/moment-fquarter",
+  "homepage": "https://github.com/yujj/moment-fweek",
   "authors": [
-    "Rob Allen"
+    "Yuri Yurin"
   ],
-  "description": "Fiscal quarterly formatting for moment.js",
+  "description": "Fiscal weekly formatting for moment.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -15,7 +15,6 @@
     "test",
     "tests"
   ],
-
   "devDependencies": {
     "moment": "~2.5.1"
   }

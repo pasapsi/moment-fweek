@@ -1,4 +1,4 @@
 node_modules
 bower_components
 .idea
-test/fquarterSpec.js
+test/fweekSpec.js
