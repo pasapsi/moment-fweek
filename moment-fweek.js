@@ -10,32 +10,34 @@
         moment.fn.fweek = function (startMonth) {
             var thisDate = this.clone();
             var initial = thisDate.local()._week || "W";
-            var result = {}, adjustedDate, nextYear = null;
+            var result = {};
             startMonth = startMonth || 4; // default is April
             var originalDate = this.clone();
-
-            if (startMonth > 1) {
-                adjustedDate = thisDate.subtract(startMonth - 1, "months");
-                nextYear = adjustedDate.clone().add(1, "years");
-            } else {
-                adjustedDate = thisDate;
-            }
-            if (startMonth < 0) {
-                adjustedDate = thisDate.subtract(12 + startMonth, "month").add(1, "year");
-                nextYear = adjustedDate.clone().add(1, "year");
-            } else {
-                adjustedDate = thisDate;
+            var firstWeekOfYear = this.clone().isoWeek(1).startOf('isoWeek');
+            var startOfFiscalYear = this.clone().startOf('month').month(startMonth - 1);
+            var isoWeekDay = startOfFiscalYear.isoWeekday();
+            if (isoWeekDay > 4) {
+                startOfFiscalYear.add(7, 'day');
             }
 
-            result.week = adjustedDate.isoWeek();
-            result.year = adjustedDate.year();
-            result.nextYear = (nextYear) ? nextYear.year() : nextYear;
-            result.start = originalDate.set("date", 1).subtract((originalDate.month() + 12) % 3, "months").format("YYYY-MM-DD");
-            result.end = originalDate.set("date", 1).subtract((originalDate.month() + 12) % 3, "months").add(3, "months").subtract(1, "day").format("YYYY-MM-DD");
+            var firstWeekOfFiscalYear = startOfFiscalYear.startOf('isoWeek');
+            var diffDays = firstWeekOfFiscalYear.diff(firstWeekOfYear, 'days');
+            var adjustedDateWeek = this.clone().subtract(diffDays, 'day');
+
+
+            // console.log(firstWeekOfYear.format(), isoWeekDay, startOfFiscalYear.isoWeekday(), firstWeekOfFiscalYear.format(), diffDays, adjustedDateWeek.format());
+
+            result.week = adjustedDateWeek.isoWeek();
+            result.year = adjustedDateWeek.isoWeekYear();
+
+
+            result.nextYear = adjustedDateWeek.isoWeekYear() + 1;
+            result.start = originalDate.startOf('isoWeek').format("YYYY-MM-DD");
+            result.end = originalDate.endOf('isoWeek').format("YYYY-MM-DD");
 
             result.toString = function () {
                 var str = initial + result.week + " " + result.year;
-                return (nextYear) ? str + "/" + nextYear.format("YY") : str;
+                return str + "/" + moment().year(adjustedDateWeek.isoWeekYear() + 1).format('YY');
             };
 
             return result;
