@@ -1,19 +1,14 @@
 {
-  "name": "moment-fquarter",
+  "name": "moment-fweek",
   "version": "0.1.0",
-  "description": "Fiscal quarterly formatting for momentjs",
-  "author": "Rob Allen",
-  "contributors": [
-    {
-      "name": "Yago Ferrer",
-      "email": "yago.ferrer@gmail.com"
-    }
-  ],
+  "description": "Fiscal week formatting for momentjs",
+  "author": "Yuri Yurin",
+  "contributors": [],
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
     "test": "./node_modules/.bin/grunt test"
   },
-  "main": "moment-fquarter.js",
+  "main": "moment-fweek.js",
   "devDependencies": {
     "bower": "^1.3.12",
     "grunt": "^0.4.4",

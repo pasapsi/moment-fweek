@@ -17,8 +17,8 @@ module.exports = function(grunt) {
                 report: 'gzip'
             },
             build: {
-                src: 'moment-fquarter.js',
-                dest: 'moment-fquarter.min.js'
+                src: 'moment-fweek.js',
+                dest: 'moment-fweek.min.js'
             }
         },
 
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         coffee: {
             compile: {
                 files: {
-                    'test/fquarterSpec.js': 'test/fquarterSpec.coffee'
+                    'test/fweekSpec.js': 'test/fweekSpec.coffee'
                 }
             }
         }
